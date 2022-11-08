@@ -9,6 +9,6 @@ class informacion(models.Model):
 
     name = fields.Char(string="Título:")
     descripcion = fields.Text(string="Descripción:")
-    alto_encms = fields.Integer(string="Altura en cms:")
+    alto_en_cms = fields.Integer(string="Altura en cms:")
     ancho_en_cms = fields.Integer(string="Anchura en cms:")
     longo_en_cms = fields.Integer(string="Longo en cms:")
