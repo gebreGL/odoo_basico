@@ -33,7 +33,7 @@
             <group>
               <field name="name"/>
               <field name="descripcion"/>
-              <field name="alto_encms"/>
+              <field name="alto_en_cms"/>
               <field name="ancho_en_cms"/>
               <field name="longo_en_cms"/>
             </group>
