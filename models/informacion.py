@@ -15,4 +15,16 @@ class informacion(models.Model):
     alto_en_cms = fields.Integer(string="Altura en cms:")
     ancho_en_cms = fields.Integer(string="Anchura en cms:")
     longo_en_cms = fields.Integer(string="Longo en cms:")
+    volume = fields.Float(compute="_volume", store=True)
+    densidade = fields.Float(compute="_densidade", store=True)
+
+    @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
+    def _volume(self):
+        for rexistro in self:
+            rexistro.volume = float(rexistro.alto_en_cms) * float(rexistro.longo_en_cms) * float(rexistro.ancho_en_cms)
+
+    @api.depends('peso', 'volume')
+    def _densidade(self):
+        for rexistro in self:
+            rexistro.densidade = float(rexistro.peso) / float(rexistro.volume)
 
