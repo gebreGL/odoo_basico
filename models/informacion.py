@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
+from odoo.exceptions import ValidationError
 
 class informacion(models.Model):
     _name = 'odoo_basico.informacion'
@@ -17,6 +17,7 @@ class informacion(models.Model):
     longo_en_cms = fields.Integer(string="Longo en cms:")
     volume = fields.Float(compute="_volume", store=True)
     densidade = fields.Float(compute="_densidade", store=True)
+    literal = fields.Char(store=False)
 
     @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
     def _volume(self):
@@ -26,5 +27,23 @@ class informacion(models.Model):
     @api.depends('peso', 'volume')
     def _densidade(self):
         for rexistro in self:
-            rexistro.densidade = float(rexistro.peso) / float(rexistro.volume)
+            if rexistro.volume != 0:
+                rexistro.densidade = float(rexistro.peso) / float(rexistro.volume)
+            else:
+                rexistro.densidade = 0
+
+    @api.onchange('alto_en_cms')
+    def _avisoAlto(self):
+        for rexistro in self:
+            if rexistro.alto_en_cms > 7:
+                rexistro.literal = 'O alto ten un valor posiblemente excesivo %s é maior que 7' % rexistro.alto_en_cms
+            else:
+                rexistro.literal = ""
+
+    @api.constrains('peso')  # Ao usar ValidationError temos que importar a libreria ValidationError
+    def _constrain_peso(self):  # from odoo.exceptions import ValidationError
+        for rexistro in self:
+            if rexistro.peso < 1 or rexistro.peso > 6:
+                raise ValidationError('Os peso de %s ten que ser entre 1 e 4 ' % rexistro.name)
+
 
