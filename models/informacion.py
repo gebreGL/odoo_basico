@@ -20,6 +20,9 @@ class informacion(models.Model):
     volume = fields.Float(compute="_volume", store=True)
     densidade = fields.Float(compute="_densidade", store=True)
     literal = fields.Char(store=False)
+    foto = fields.Binary(string='Foto')
+    adxunto_nome = fields.Char(string="Nome Adxunto:")
+    adxunto = fields.Binary(string="Arquivo adxunto:")
 
     @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
     def _volume(self):
