@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="linea_pedido_list_action">
+            <field name="name">Acción para linea_pedido</field>
+            <field name="res_model">odoo_basico.linea_pedido</field>
+            <field name="view_mode">tree, form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Tes que crear o primeiro rexistro</p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="linea_pedido_tree_view">
+            <field name="name">linea_pedido.tree</field>
+            <field name="model">odoo_basico.linea_pedido</field>
+            <field name="arch" type="xml">
+                <tree string="Tree para linea pedido">
+                    <field name="descripcion_linea_pedido"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="linea_pedido_form_view">
+            <field name="name">linea_pedido.form</field>
+            <field name="model">odoo_basico.linea_pedido</field>
+            <field name="arch" type="xml">
+                <form string="Formulario para linea_pedido">
+                    <sheet>
+                        <field name="name"/>
+                        <field name="descripcion_linea_pedido"/>
+                    </sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <separator string="Visualizar e engadir"/>
+                    <field name="linealinea_pedido_ids"/>
+<!--                    Se quixeramos que non se poideran editar as linealinea_pedido:-->
+<!--                    <separator string="Só visualizar"/>-->
+<!--                    <field name="linealinea_pedido_ids" readonly="1"/>-->
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="linea_pedido_search_view">
+            <field name="name">linea_pedido.form</field>
+            <field name="model">odoo_basico.linea_pedido</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+  </data>
+</odoo>

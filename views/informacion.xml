@@ -91,9 +91,13 @@
                 <field name="adxunto" filename="adxunto_nome"/>
               </group>
             </page>
-            <page string="Moedas">
+            <page string="Datos Moedas">
               <group>
-
+                <field name="moeda_id"/>
+<!--                <field name="moeda_euro_id" invisible="1"/>-->
+                <field name="moeda_en_texto"/>
+                <field name="gasto_en_euros"/>
+                <field name="creador_da_moeda"/>
               </group>
             </page>
             <page string="Datas">

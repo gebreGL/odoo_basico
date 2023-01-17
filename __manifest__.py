@@ -29,7 +29,10 @@
         'views/suceso.xml',
         'views/templates.xml',
         'views/menu.xml',
+        'views/pedido.xml',
+        'views/linea_pedido.xml',
         'security/ir.model.access.csv',
+
     ],
     # only loaded in demonstration mode
     'demo': [

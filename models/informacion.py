@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
-class informacion(models.Model):
+class informacion (models.Model):
     _name = 'odoo_basico.informacion'
     _description = 'Exemplo para información'
     _sql_constraints = [('nomeUnico', 'unique(name)', 'Non se pode repetir o título')]
@@ -23,6 +23,19 @@ class informacion(models.Model):
     foto = fields.Binary(string='Foto')
     adxunto_nome = fields.Char(string="Nome Adxunto:")
     adxunto = fields.Binary(string="Arquivo adxunto:")
+
+    # Os campos Many2one crean un campo na BD
+    moeda_id = fields.Many2one('res.currency', domain="[('position','=','after')]")
+    # con domain, filtramos os valores mostrados. Pode ser mediante unha constante (vai entre comillas) ou unha variable
+    #res.currency es el nombre de la BD
+    #Relación para buscar en la tabla res.currency con una función lambda
+    moeda_euro_id = fields.Many2one('res.currency',
+                                    default=lambda self: self.env['res.currency'].search([('name', '=', "EUR")],
+                                                                                         limit=1))
+    gasto_en_euros = fields.Monetary("Gasto en Euros", 'moeda_euro_id')
+    moeda_en_texto = fields.Char(related="moeda_id.currency_unit_label", string="Moeda en formato texto", store=True)
+    creador_da_moeda = fields.Char(related="moeda_id.create_uid.login",string="Usuario creador da moeda", store=True)
+
 
     @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
     def _volume(self):
