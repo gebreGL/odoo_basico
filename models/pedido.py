@@ -7,4 +7,5 @@ class pedido(models.Model):
     _description = 'Exemplo para pedido'
 
     name = fields.Char(required=True, size=20, string="Identificador de pedido")
+    # Os campos One2many Non se almacenan na BD
     lineapedido_ids = fields.One2many("odoo_basico.linea_pedido", 'pedido_id')

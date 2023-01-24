@@ -16,6 +16,7 @@
             <field name="arch" type="xml">
                 <tree string="Tree para linea pedido">
                     <field name="descripcion_linea_pedido"/>
+                    <field name="informacion_ids"/>
                 </tree>
             </field>
         </record>
@@ -29,24 +30,15 @@
                         <field name="name"/>
                         <field name="descripcion_linea_pedido"/>
                     </sheet>
-                    <group>
-                        <field name="name"/>
-                    </group>
-                    <separator string="Visualizar e engadir"/>
-                    <field name="linealinea_pedido_ids"/>
-<!--                    Se quixeramos que non se poideran editar as linealinea_pedido:-->
-<!--                    <separator string="Só visualizar"/>-->
-<!--                    <field name="linealinea_pedido_ids" readonly="1"/>-->
                 </form>
             </field>
         </record>
-
         <record model="ir.ui.view" id="linea_pedido_search_view">
             <field name="name">linea_pedido.form</field>
             <field name="model">odoo_basico.linea_pedido</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="name"/>
+                    <field name="descripcion_linea_pedido"/>
                 </search>
             </field>
         </record>

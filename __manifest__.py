@@ -24,13 +24,13 @@
 
     # always loaded
     'data': [
-        #
+        'reports/report_informacion.xml',
         'views/informacion.xml',
         'views/suceso.xml',
         'views/templates.xml',
-        'views/menu.xml',
         'views/pedido.xml',
         'views/linea_pedido.xml',
+        'views/menu.xml',
         'security/ir.model.access.csv',
 
     ],
