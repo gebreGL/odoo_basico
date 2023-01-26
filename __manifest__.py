@@ -31,6 +31,7 @@
         'views/pedido.xml',
         'views/linea_pedido.xml',
         'views/menu.xml',
+        'reports/report_header.xml',
         'security/ir.model.access.csv',
 
     ],
