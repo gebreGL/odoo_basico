@@ -16,7 +16,6 @@
             <field name="arch" type="xml">
                 <tree string="Tree para linea pedido">
                     <field name="descripcion_linea_pedido"/>
-                    <field name="informacion_ids"/>
                 </tree>
             </field>
         </record>
@@ -27,8 +26,11 @@
             <field name="arch" type="xml">
                 <form string="Formulario para linea_pedido">
                     <sheet>
-                        <field name="name"/>
-                        <field name="descripcion_linea_pedido"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="descripcion_linea_pedido"/>
+                            <field name="informacion_ids"/>
+                        </group>
                     </sheet>
                 </form>
             </field>
@@ -43,5 +45,5 @@
             </field>
         </record>
 
-  </data>
+    </data>
 </odoo>

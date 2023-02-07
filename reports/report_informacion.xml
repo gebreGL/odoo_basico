@@ -41,48 +41,6 @@
             paperformat="paperformat_euro_portrait"/>
     <!--    En name="odoo_basico.report_informacion_template" se establece la plantilla a utilizar, definida en este caso más abajo -->
 
-    <!-- PLantilla, la cual llama a los estilos ya creados en el módulo web de odoo ya incorporado -->
-    <template id="report_informacion_template">
-        <t t-call="web.html_container"/>
-        <t t-call="web.external_layout">
-            <table class="table table-sm">
-                <thread>
-                    <tr class="bg-primary">
-                        <td class="text-left">
-                            <h5>
-                                <span t-field="o.name"/>
-                            </h5>
-                        </td>
-                        <td class="text-left">
-                            <span t-field="o.peso"/>
-                            <t t-if="o.peso &gt; 3">
-                                <t t-set="suma_peso" t-value="suma_peso + o.peso"/>
-                            </t>
-                        </td>
-                        <td class="text-left">
-                            <t t-if="o.autorizado == True">
-                                <span>SI</span>
-                            </t>
-                            <t t-else="">
-                                <span>NON</span>
-                            </t>
-                        </td>
-                        <td class="text-left">Datas</td>
-                        <td class="text-left">Sexo</td>
-                    </tr>
-                </thread>
-
-                <!-- En docs se tienen todos los registros del proyecto -->
-                <tbody>
-                    <t t-set="suma_peso" t-value="0"/>
-                    <t t-foreach="docs" t-as="o"/>
-                </tbody>
-            </table>
-
-        </t>
-    </template>
-
-
     <report id="action_report_foto_informacion"
             string="Listaxe das fotos en Información"
             model="odoo_basico.informacion" report_type="qweb-pdf"
@@ -90,6 +48,71 @@
             paperformat="paperformat_euro_landscape"
     />
 
+
+    <!-- PLantilla, la cual llama a los estilos ya creados en el módulo web de odoo ya incorporado -->
+    <template id="report_informacion_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <table class="table table-sm">
+                    <thread>
+                        <tr class="bg-primary">
+                            <th class="text-left">Titulo(name)</th>
+                            <th class="text-left">Peso</th>
+                            <th class="text-left">Autorizado</th>
+                            <!--                            <th class="text-left">Datas</th>-->
+                            <th class="text-left">Sexo</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        <t t-set="suma_peso" t-value="0"/>
+                        <t t-foreach="docs" t-as="o">
+                            <tr>
+                                <td class="text-left">
+                                    <h5>
+                                        <span t-field="o.name"/>
+                                    </h5>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="o.peso"/>
+                                    <t t-if="o.peso &gt; 3">
+                                        <t t-set="suma_peso" t-value="suma_peso + o.peso"/>
+                                    </t>
+                                </td>
+                                <td class="text-left">
+                                    <t t-if="o.autorizado == True">
+                                        <span>SI</span>
+                                    </t>
+                                    <t t-else="">
+                                        <span>NON</span>
+                                    </t>
+                                </td>
+                                <!--<td class="text-left">Datas</td>-->
+                                <td class="text-left">
+                                    <h5>
+                                        <span t-field="o.sexo_traducido"/>
+                                    </h5>
+                                </td>
+                            </tr>
+                            <!-- En docs se tienen todos los registros del proyecto -->
+                        </t>
+                        <td class="text-left">
+                            <span>Suma de pesos maior a 3</span>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="suma_peso" t-options='{"widget": "float", "precision": 2}'/>
+                        </td>
+                        <td class="text-left">
+                            <span>Total Pesos:</span>
+                        </td>
+                        <td class="text-left">
+                            <span t-esc="sum([x.peso for x in docs])" t-options='{"widget": "float", "precision": 2}'/>
+                        </td>
+
+                    </tbody>
+                </table>
+            </t>
+        </t>
+    </template>
 
     <template id="report_foto_informacion_template">
         <t t-call="web.html_container">

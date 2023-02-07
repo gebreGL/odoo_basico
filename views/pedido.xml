@@ -16,7 +16,7 @@
             <field name="arch" type="xml">
                 <tree string="Tree para pedido">
                     <field name="name"/>
-                    <field name="lineapedido_ids"/>
+                    <field name="data_hora"/>
                 </tree>
             </field>
         </record>
@@ -26,14 +26,23 @@
             <field name="model">odoo_basico.pedido</field>
             <field name="arch" type="xml">
                 <form string="Formulario para Pedido">
+                    <header>
+                        <button name="actualizadorSexo" type="object"
+                                string="Actualiza o campo Sexo do modelo información"/>
+                        <button name="creaRexistroInformacion" type="object"
+                                string="Crea un rexistro no modelo información"/>
+                        <button name="actualizaRexistroInformacion" type="object"
+                                string="Actualiza o rexistro creado no modelo información"/>
+                    </header>
                     <group>
                         <field name="name"/>
+                        <field name="data_hora"/>
                     </group>
                     <separator string="Visualizar e engadir"/>
                     <field name="lineapedido_ids" readOnly="1"/>
-<!--                    Se quixeramos que non se poideran editar as linea_pedido:-->
-<!--                    <separator string="Só visualizar"/>-->
-<!--                    <field name="linea_pedido_ids" readonly="1"/>-->
+                    <!--                    Se quixeramos que non se poideran editar as linea_pedido:-->
+                    <!--                    <separator string="Só visualizar"/>-->
+                    <!--                    <field name="linea_pedido_ids" readonly="1"/>-->
                 </form>
             </field>
         </record>
@@ -48,5 +57,10 @@
             </field>
         </record>
 
-  </data>
+
+        <button name="actualizadorHoraTimezone" type="object"
+                string="Actualiza Hora Timezone do Usuario en todos os rexistros do modelo información"/>
+
+
+    </data>
 </odoo>

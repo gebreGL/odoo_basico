@@ -2,7 +2,6 @@
 
 from odoo import models, fields, api
 
-
 class suceso(models.Model):
     _name = 'odoo_basico.suceso'
     _description = 'Exemplo para suceso'
