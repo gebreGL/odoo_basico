@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/odoo_basico.iml" filepath="$PROJECT_DIR$/.idea/odoo_basico.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/odoo_basicoProfe.iml" filepath="$PROJECT_DIR$/.idea/odoo_basicoProfe.iml" />
     </modules>
   </component>
 </project>

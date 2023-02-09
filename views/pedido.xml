@@ -33,6 +33,8 @@
                                 string="Crea un rexistro no modelo información"/>
                         <button name="actualizaRexistroInformacion" type="object"
                                 string="Actualiza o rexistro creado no modelo información"/>
+                        <button name="actualizadorHoraTimezone" type="object"
+                                string="Actualiza Hora Timezone do Usuario en todos os rexistros do modelo información"/>
                     </header>
                     <group>
                         <field name="name"/>
@@ -56,11 +58,6 @@
                 </search>
             </field>
         </record>
-
-
-        <button name="actualizadorHoraTimezone" type="object"
-                string="Actualiza Hora Timezone do Usuario en todos os rexistros do modelo información"/>
-
 
     </data>
 </odoo>

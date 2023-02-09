@@ -1,6 +1,5 @@
 
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
 
 class pedido(models.Model):
     _name = 'odoo_basico.pedido'
