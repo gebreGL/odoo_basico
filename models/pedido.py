@@ -7,6 +7,11 @@ class pedido(models.Model):
 
     name = fields.Char(required=True, size=20, string="Identificador de pedido")
     data_hora = fields.Datetime(string="Data e Hora")
+
+    #Many2One con res.partner
+    persoa_id = fields.Many2one('res.partner', ondelete='set null', domain="[('visible','=','True')]", index=True,
+                                string="Persoa")
+
     # Os campos One2many Non se almacenan na BD
     lineapedido_ids = fields.One2many("odoo_basico.linea_pedido", 'pedido_id')
 

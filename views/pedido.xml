@@ -39,6 +39,7 @@
                     <group>
                         <field name="name"/>
                         <field name="data_hora"/>
+                        <field name="persoa_id"/>
                     </group>
                     <separator string="Visualizar e engadir"/>
                     <field name="lineapedido_ids" readOnly="1"/>
