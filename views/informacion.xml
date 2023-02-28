@@ -25,7 +25,7 @@
         </record>
 
         <record model="ir.ui.view" id="informacion_search_view">
-            <field name="name">informacion.form</field>
+            <field name="name">informacion.search</field>
             <field name="model">odoo_basico.informacion</field>
             <field name="arch" type="xml">
                 <search>
@@ -40,7 +40,7 @@
 
 
         <record model="ir.ui.view" id="informacion_tree_view">
-            <field name="name">informacion.form</field>
+            <field name="name">informacion.tree</field>
             <field name="model">odoo_basico.informacion</field>
             <field name="arch" type="xml">
                 <tree string="Formulario para Informacion">

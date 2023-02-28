@@ -20,10 +20,11 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'account'],
 
     # always loaded
     'data': [
+        'accions_planificadas/accion_planificada.xml',
         'reports/report_header.xml',
         'reports/report_informacion.xml',
         'views/informacion.xml',
@@ -34,7 +35,7 @@
         'views/linea_pedido.xml',
         'views/menu.xml',
         'security/ir.model.access.csv',
-
+        'security/Xestion_Usuarios.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
